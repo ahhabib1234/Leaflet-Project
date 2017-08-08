@@ -1,0 +1,34 @@
+---
+title: "leaflet Project Presentation"
+author: "Ahsan Habib"
+date: "8/8/2017"
+output:
+  ioslides_presentation: default
+  slidy_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Vasona Park MAP
+
+```{r map, echo=FALSE,comment=""}
+library(leaflet)
+format(Sys.time(), "%a %b %d %H:%M:%S %Y")
+# Create Icon for Vasona Park
+
+vasonaIcon <- makeIcon(
+iconUrl ="Vasona.jpg"
+,iconWidth= 80*215/230, iconHeight = 80,
+iconAnchorX = 80*215/230/2, iconAnchorY = 16
+)
+
+
+# Vasona Park Location
+df <- data.frame(lat = 37.239944, lng = -121.9685682)
+df %>%
+    leaflet() %>%
+    addTiles() %>%
+    addMarkers(icon = vasonaIcon, popup = "Vasona Park")
+```
